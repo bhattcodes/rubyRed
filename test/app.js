@@ -17,7 +17,7 @@ var i = 0;
 //var travellers = [{"userid": 242335,"timeStamp": 388484838,"message":"NEWUSER"}];
 var OnlineUsers = [{"id": 1,"name": "Louis Litt","photo": "louislitt.png","status": "online","lastmessage": "You just got LITT up, Mike."},{"id": 2,"name": "Harvey Specter","photo": "harveyspecter.png","status": "online","lastmessage": "Wrong. You take the gun, or you"},{"id": 3,"name": "Rachel Zane","photo": "rachelzane.png","status": "online","lastmessage": "I was thinking that we could have."},{"id": 4,"name": "Donna Paulsen","photo": "donnapaulsen.png","status": "online","lastmessage": "Mike, I know everything! I'm Donna.."},{"id": 5,"name": "Mike Ross","photo": "mikeross.png","status": "online","lastmessage": "Rachel, I know everything! I'm Donna.."}];
 
-var port = process.env.PORT || 7000;
+var port = process.env.PORT || 8000;
 
 app.use(express.static(__dirname + '/'));
 

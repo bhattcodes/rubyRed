@@ -18,7 +18,7 @@ function App() {
       <Emergencycard
         title="Feeling Threatened or need help?"
         description=""
-        imageSrc="sos_bg" // Add the image source
+        // imageSrc="sos_bg" // Add the image source
         buttonText="Safety"
       />
       <ResponseCard

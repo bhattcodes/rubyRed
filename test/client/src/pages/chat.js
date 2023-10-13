@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import io from "socket.io-client";
 import myImage from '../images/redChat.png'
 
-const socket = io('http://127.0.0.1:7000');
+const socket = io('http://127.0.0.1:8000');
 
 
 
