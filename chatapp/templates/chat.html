@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <header>
+        <h1>Chat App</h1>
+        <!-- Add navigation or user profile information here -->
+    </header>
+    <main>
+        <div class="chat-container">
+            <div class="chat-messages">
+                <div class="message received">
+                    <div class="user-avatar">
+                        <img src="user1.jpg" alt="User 1">
+                    </div>
+                    <div class="message-content">
+                        <p>Hi there! How are you?</p>
+                        <span class="timestamp">10:15 AM</span>
+                    </div>
+                </div>
+                <div class="message sent">
+                    <div class="message-content">
+                        <p>I'm good, thanks!</p>
+                        <span class="timestamp">10:17 AM</span>
+                    </div>
+                </div>
+                <!-- More chat messages go here -->
+            </div>
+            <div class="message-input">
+                <input type="text" id="message" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Chat App</p>
+    </footer>
+    <script src="app.js"></script> <!-- Link to your JavaScript file for chat functionality -->
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<title>chat</title>
+<body>
+    
+
+<!-- chat.html -->
+<form id="chat-form">
+    <input id="message" autocomplete="off" placeholder="Type a message...">
+    <button>Send</button>
+</form>
+<ul id="chat"></ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+    socket.on('message', function(data) {
+        var chat = document.getElementById('chat');
+        chat.innerHTML += '<li>' + data.message + '</li>';
+    });
+
+    document.getElementById('chat-form').onsubmit = function(e) {
+        e.preventDefault();
+        socket.emit('send_message', { message: document.getElementById('message').value });
+        document.getElementById('message').value = '';
+    };
+</script>
+
+
+</body>
+
+
+
+</html>
+
