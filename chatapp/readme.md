@@ -1,7 +1,7 @@
 # Pre Requisite
 ## Redis
 brew install redis <br/>
-## To start the Redis server in cli: <br/>
+## To start the Redis server in cli:
 redis-server
 <br/>
 run redis at (host='localhost', port=6379, db=0)
