@@ -4,6 +4,74 @@
     <title>Choose an Option</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Styles from your original code */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        button[type="submit"] {
+            background-color: #E6545B;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #E6545B;
+        }
+
+        /* Additional style for the "Get Current Location" button */
+        .get-location-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .get-location-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1 class="mb-4">Choose an Option</h1> <!-- Add margin to the bottom -->
@@ -33,16 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="your_image_source_here" class="card-img-top" alt="Others">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="/others">Others</a>
-                    </div>
-                </div>
-            </div>
+        
         </div>
     </div>
 </body>
