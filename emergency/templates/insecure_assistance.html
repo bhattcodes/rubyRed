@@ -1,116 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Emergency Assistance</title>
-<style>
-/* Styles from your original code */
-body {
-font-family: Arial, sans-serif;
-background-color: #f0f0f0;
-margin: 0;
-padding: 0;
-}
-h1 {
-background-color: #E6545B;
-color: #ffffff;
-padding: 10px;
-text-align: center;
-}
-form {
-background-color: #ffffff;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-border-radius: 5px;
-padding: 20px;
-margin: 20px auto;
-max-width: 400px;
-text-align: center;
-}
-label {
-display: block;
-margin-bottom: 10px;
-font-weight: bold;
-}
-input[type="text"] {
-width: calc(100% - 22px);
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 5px;
-display: inline-block;
-}
-button[type="submit"] {
-background-color: #E6545B;
-color: #ffffff;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-}
-button[type="submit"]:hover {
-background-color: #E6545B;
-}
-/* Additional style for the "Get Current Location" button */
-.get-location-button {
-background-color: #007bff;
-color: #ffffff;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-cursor: pointer;
-}
-.get-location-button:hover {
-background-color: #0056b3;
-}
-</style>
+    <title>Emergency Assistance</title>
+    <style>
+        /* Styles from your original code */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #E6545B;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        form {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        button[type="submit"] {
+            background-color: #E6545B;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #E6545B;
+        }
+        /* Additional style for the "Get Current Location" button */
+        .get-location-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .get-location-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1>Emergency Assistance</h1>
-<form>
-<label for="phone_number">Your Phone Number:</label>
-<input type="text" name="phone_number" id="phone_number" required>
-<br>
-<label for="emergency_contact">Emergency Contact Number:</label>
-<input type="text" name="emergency_contact" id="emergency_contact" required>
-<br>
-<button type="button" class="get-location-button" onclick="sendEmergencyMessage()">Send Emergency Message</button>
-</form>
-<script>
-function getCurrentLocation(callback) {
-if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(function (position) {
-var latitude = position.coords.latitude;
-var longitude = position.coords.longitude;
-var locationInput = latitude + ', ' + longitude;
-callback(locationInput);
-});
-} else {
-alert("Geolocation is not supported by your browser.");
-}
-}
-function sendEmergencyMessage() {
-getCurrentLocation(function (location) {
-var phone_number = document.getElementById("phone_number").value;
-var emergency_contact = document.getElementById("emergency_contact").value;
-// Prepare the data to be sent to the server
-var data = {
-phone_number: phone_number,
-emergency_contact: emergency_contact,
-location: location,
-};
-// Send the data to the server (you need to implement the server-side logic)
-var xhr = new XMLHttpRequest();
-var url = '/send_emergency_message'; // Endpoint on the server
-xhr.open('POST', url, true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.onreadystatechange = function () {
-if (xhr.readyState === 4 && xhr.status === 200) {
-// Handle the server's response (e.g., display a confirmation message)
-alert('Emergency message sent.');
-}
-};
-xhr.send(JSON.stringify(data));
-});
-}
-</script>
+    <h1>Emergency Assistance</h1>
+    <form>
+        <label for="phone_number">Your Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number" required>
+        <br>
+        <label for="emergency_contact">Emergency Contact Number:</label>
+        <input type="text" name="emergency_contact" id="emergency_contact" required>
+        <br>
+        <button type="button" class="get-location-button" onclick="sendEmergencyMessage()">Send Emergency Message</button>
+    </form>
+    <script>
+        function getCurrentLocation(callback) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var locationInput = latitude + ', ' + longitude;
+                    callback(locationInput);
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        function sendEmergencyMessage() {
+            getCurrentLocation(function (location) {
+                var phone_number = document.getElementById("phone_number").value;
+                var emergency_contact = document.getElementById("emergency_contact").value;
+                // Prepare the data to be sent to the server
+                var data = {
+                    phone_number: phone_number,
+                    emergency_contact: emergency_contact,
+                    location: location,
+                };
+                // Send the data to the server (you need to implement the server-side logic)
+                var xhr = new XMLHttpRequest();
+                var url = '/send_emergency_message'; // Endpoint on the server
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Handle the server's response (e.g., display a confirmation message)
+                        alert('Emergency message sent.');
+                    }
+                };
+                xhr.send(JSON.stringify(data));
+            });
+        }
+    </script>
 </body>
 </html>

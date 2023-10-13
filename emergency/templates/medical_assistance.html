@@ -3,7 +3,6 @@
 <head>
     <title>Medical Assistance</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,10 +64,14 @@
         button[type="submit"]:hover {
             background-color: #E6545B;
         }
+
+        .phone-icon {
+            width: 50px;
+            margin-bottom: 10px;
+        }
     </style>
 
     <script>
-        // Function to get the user's current location
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -77,14 +80,12 @@
             }
         }
 
-        // Function to display the user's location
         function showPosition(position) {
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
             document.getElementById("location_input").value = lat + ", " + long;
         }
 
-        // Function to handle geolocation errors
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
@@ -106,10 +107,18 @@
 <body>
     <h1>Medical Assistance</h1>
     <form method="POST" action="/medical_assistance">
-        <label for="location_input">Enter your location (e.g., lat, long):</label>
+        <label for="location_input">Enter your location(lat,long):</label>
         <input type="text" name="location_input" id="location_input" required>
         <button type="button" onclick="getLocation()">Get Current Location</button>
         <button type="submit">Find Nearest Hospitals</button>
     </form>
+
+    <!-- Call Ambulance Section -->
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="tel:108">
+            <img src="{{ url_for('static', filename='/images/emerg.png') }}" alt="Call Ambulance" class="phone-icon">
+            <p>Call an Ambulance</p>
+        </a>
+    </div>
 </body>
 </html>
