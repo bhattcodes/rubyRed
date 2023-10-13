@@ -74,6 +74,16 @@ def medical_assistance():
                 return render_template('medical_assistance_results.html', hospitals=sorted_hospitals)
     return render_template('medical_assistance.html')
 
+# Route to show hospital location on Google Maps
+@app.route('/show_hospital_location', methods=['POST'])
+def show_hospital_location():
+    latitude = request.form.get('latitude')
+    longitude = request.form.get('longitude')
+    
+    # Construct the Google Maps URL using latitude and longitude
+    google_maps_url = f"https://www.google.com/maps/place/{latitude},{longitude}"
+    return redirect(google_maps_url)
+
 @app.route('/proceed', methods=['POST'])
 def proceed():
     agreement_agreed = request.form.get('agreement_agreed')

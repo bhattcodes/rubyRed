@@ -1,13 +1,26 @@
+<!-- medical_assistance_results.html -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Medical Assistance Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest Hospitals</title>
 </head>
 <body>
     <h1>Nearest Hospitals</h1>
+    
     <ul>
         {% for hospital in hospitals %}
-        <li>{{ hospital.name }} - {{ hospital.distance }}</li>
+            <li>
+                <strong>{{ hospital.name }}</strong><br>
+                Distance: {{ hospital.distance }}<br>
+                <form action="{{ url_for('show_hospital_location') }}" method="post">
+                    <input type="hidden" name="latitude" value="{{ hospital.latitude }}">
+                    <input type="hidden" name="longitude" value="{{ hospital.longitude }}">
+                    <button type="submit">View on Google Maps</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 </body>
