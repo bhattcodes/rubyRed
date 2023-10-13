@@ -14,48 +14,14 @@
         }
 
         h1 {
-            background-color: #ff0000;
+            background-color: #E6545B;
             color: #ffffff;
             padding: 10px;
             text-align: center;
         }
 
-        form {
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        button[type="submit"] {
-            background-color: #E6545B;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #E6545B;
+        .card {
+            margin-top: 20px;
         }
 
         /* Additional style for the "Get Current Location" button */
@@ -74,34 +40,31 @@
     </style>
 </head>
 <body>
-    <h1 class="mb-4">Choose an Option</h1> <!-- Add margin to the bottom -->
+    <h1 class="mb-4">Choose an Option</h1>
 
-    <div class="mt-4"> <!-- Add margin to the top -->
-    </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
+            <!-- Add mx-auto class to center-align the columns -->
+            <div class="col-lg-4 mx-auto">
                 <div class="card" style="width: 18rem;">
                     <img src="../static/images/vecteezy.png" class="card-img-top" alt="Medical Assistance">
-
                     <div class="card-body">
                         <h5 class="card-title">Medical Assistance</h5>
                         <p class="card-text">Get the medical help you need when you need it. Our experienced team of healthcare professionals is available 24/7 to assist with your medical concerns. Whether it's a minor ailment or a health emergency, we're here to provide the care and support you require.</p>
-                        <a href="/medical_assistance">Medical Assistance</a>
+                        <a href="/medical_assistance" class="btn btn-primary">Medical Assistance</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 mx-auto">
                 <div class="card" style="width: 18rem;">
                     <img src="../static/images/emergency_image.jpg" class="card-img-top" alt="Insecure Assistance">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">Emergency Assistance</h5>
                         <p class="card-text">Our Emergency Contact Assistance service is available 24/7 to help you in case of emergencies. Whether you need immediate medical assistance, have a security concern, or require any other form of help, our team is here to provide the support you need. Your safety is our priority.</p>
-                        <a href="/insecure_assistance">Insecure Assistance</a>
+                        <a href="/insecure_assistance" class="btn btn-primary">Insecure Assistance</a>
                     </div>
                 </div>
             </div>
-        
         </div>
     </div>
 </body>
