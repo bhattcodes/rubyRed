@@ -6,21 +6,21 @@ body, h1, ul, li, a, h2, p, form, label, input[type="text"], button {
 
 /* Set a background color for the entire page */
 body {
-    background-color: #f0f0f0;
+    background-color: #ffffff; /* White background */
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
 /* Shared header styles */
 h1 {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff0000; /* Red background */
+    color: #ffffff; /* White text */
     padding: 10px;
 }
 
 /* Shared form styles */
 form {
-    background-color: #fff;
+    background-color: #ffffff; /* White background */
     padding: 20px;
     margin: 20px auto;
     max-width: 400px;
@@ -38,13 +38,13 @@ input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff0000; /* Red border */
     border-radius: 5px;
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff0000; /* Red background */
+    color: #ffffff; /* White text */
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -52,7 +52,7 @@ button {
 }
 
 button[type="button"] {
-    background-color: #28a745;
+    background-color: #28a745; /* Green background for buttons of type "button" */
 }
 
 button[type="button"]:hover {
@@ -73,7 +73,7 @@ ul {
     max-width: 200px;
     text-align: left;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #ffffff; /* White background */
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -84,22 +84,22 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #007bff;
+    color: #ff0000; /* Red text */
     font-weight: bold;
     padding: 5px;
     display: inline-block;
-    border: 1px solid #007bff;
+    border: 1px solid #ff0000; /* Red border */
     border-radius: 5px;
 }
 
 ul li a:hover {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff0000; /* Red background */
+    color: #ffffff; /* White text */
 }
 
 /* Style the agreement section */
 #agreement-section {
-    background-color: #fff;
+    background-color: #ffffff; /* White background */
     padding: 20px;
     margin: 20px auto;
     max-width: 600px;
