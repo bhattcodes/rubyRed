@@ -1,0 +1,28 @@
+<!-- In agreement.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agreement Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Agreement Page</h1>
+    <div id="agreement-section">
+        <!-- Terms and conditions content here -->
+        <h2>Terms and Conditions</h2>
+        <p>1. You are responsible for any actions you take or decisions you make after this point.</p>
+        <p>2. Any assistance provided to you is based on your request and understanding of its consequences.</p>
+        <p>3. You acknowledge that you have read, understood, and agree to abide by the terms and conditions set forth here.</p>
+        
+        <!-- Checkbox to acknowledge the agreement -->
+        <form action="/proceed" method="post">
+            <input type="checkbox" name="agreement_agreed" required>
+            <label for="agreement_agreed">By checking this box, I acknowledge and agree to the terms and conditions.</label>
+            <br><br>
+            <input type="submit" value="Proceed">
+        </form>
+    </div>
+</body>
+</html>

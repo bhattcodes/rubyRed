@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Assistance</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <script>
+        // Function to get the user's current location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Function to display the user's location
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            document.getElementById("location_input").value = lat + ", " + long;
+        }
+
+        // Function to handle geolocation errors
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Medical Assistance</h1>
+    <form method="POST" action="/medical_assistance">
+        <label for="location_input">Enter your location (e.g., lat, long):</label>
+        <input type="text" name="location_input" id="location_input" required>
+        <button type="button" onclick="getLocation()">Get Current Location</button>
+        <button type="submit">Find Nearest Hospitals</button>
+    </form>
+</body>
+</html>

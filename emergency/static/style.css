@@ -1,0 +1,120 @@
+/* Reset some default browser styles */
+body, h1, h2, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Style the header */
+h1 {
+    background-color: #007bff; /* Blue header background */
+    color: #fff; /* White text */
+    padding: 10px;
+}
+
+/* Style the agreement section */
+#agreement-section {
+    background-color: #fff; /* White background for the agreement section */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px; /* Set a max width for the agreement section */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+form {
+    text-align: left;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Blue button background */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Reset some default browser styles */
+body, h1, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Style the header */
+h1 {
+    background-color: #007bff; /* Blue header background */
+    color: #fff; /* White text */
+    padding: 10px;
+}
+
+/* Style the form */
+form {
+    background-color: #fff; /* White background for forms */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px; /* Set a max width for forms */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff; /* Blue button background */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="button"] {
+    background-color: #28a745; /* Green button background */
+}
+
+button[type="button"]:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

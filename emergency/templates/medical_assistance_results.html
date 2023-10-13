@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Assistance Results</title>
+</head>
+<body>
+    <h1>Nearest Hospitals</h1>
+    <ul>
+        {% for hospital in hospitals %}
+        <li>{{ hospital.name }} - {{ hospital.distance }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

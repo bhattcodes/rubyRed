@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insecure Assistance</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Insecure Assistance</h1>
+    <form method="POST" action="/insecure_assistance">
+        <label for="user_name">Your Name:</label>
+        <input type="text" name="user_name" id="user_name" required>
+        <br>
+        <label for="phone_number">Your Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number" required>
+        <br>
+        <label for="emergency_contact">Emergency Contact Number:</label>
+        <input type="text" name="emergency_contact" id="emergency_contact" required>
+        <br>
+        <label for="location">Your Location (e.g., address or coordinates):</label>
+        <input type="text" name="location" id="location" required>
+        <br>
+        <button type="submit" name="call_emergency" value="1">Call Emergency Contact</button>
+    </form>
+</body>
+</html>
