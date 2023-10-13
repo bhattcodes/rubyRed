@@ -1,9 +1,25 @@
+import sys
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import webbrowser
 import polyline
 import folium
 import pandas as pd
+import smtplib
+import email.utils
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
+SENDER = 'noreply-depot@e-redbus.in'
+SENDERNAME = 'noreply-depot@e-redbus.in'
+USERNAME_SMTP = "noreply-depot@e-redbus.in"
+PASSWORD_SMTP = "ZK*`h)5}LUP"
+HOST = "smtp.gmail.com"
+PORT = 587
+
+
 
 app = Flask(__name__)
 
@@ -28,6 +44,53 @@ def get_nearest_hospital(lat, long):
     sorted_hospitals = sorted(hospitals_with_distance, key=lambda x: float(x["distance"].split()[0]))
 
     return sorted_hospitals
+def send_email(Subject, Body, Recipients_To, Recipients_Cc):
+    try:
+        SUBJECT = Subject
+        BODY_HTML = '<html>' + Body + '</html>'
+        RECIPIENT_TO = Recipients_To
+        RECIPIENT_CC = Recipients_Cc
+        RECIPIENT = RECIPIENT_CC.split(',') + [RECIPIENT_TO]
+        print(RECIPIENT)
+        # setting email content and recipients
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = SUBJECT
+        #         print(msg['Subject'])
+        #         print(msg['From'])
+        msg['From'] = email.utils.formataddr((SENDERNAME, SENDER))
+        msg['To'] = RECIPIENT_TO
+        msg['Cc'] = RECIPIENT_CC
+        # Record the MIME types
+        html_body = MIMEText(BODY_HTML, 'html')
+        
+        # Attach html_body into message container.
+        msg.attach(html_body)
+        
+#        for bu in ['REDBUS_SG','REDBUS_MY','REDBUS_ID','REDBUS_PE','REDBUS_CO']:
+            
+#            filename = "control_group_validation_{}.csv".format(bu)
+#            try:
+#                attachment = open(filename,'r')
+#                part = MIMEBase('application', 'octet-stream')
+#                part.set_payload((attachment).read())
+#                encoders.encode_base64(part)
+#                part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+#                msg.attach(part)
+#            except FileFileNotFoundError:
+#                pass
+
+        # Try to send the message.
+        server = smtplib.SMTP(HOST, PORT)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        server.login(USERNAME_SMTP, PASSWORD_SMTP)
+        server.sendmail(SENDER, RECIPIENT, msg.as_string())
+        server.close()
+    except Exception as e:
+        print('Exception: SMTPEmailService.send_email\n', e, file=sys.stderr)
+    else:
+        print('Email sent to: ', Recipients_To, ', ', Recipients_Cc)
 
 # Function to calculate distance between two locations using the OSRM API
 def calculate_distance(lat1, lon1, lat2, lon2):
@@ -61,6 +124,27 @@ def agreement():
 @app.route('/options')
 def options():
     return render_template('options.html')
+
+@app.route('/send_emergency_message', methods=['POST'])
+def send_emergency_message():
+    data = request.get_json()
+    phone_number = data['phone_number']
+    emergency_contact = data['emergency_contact']
+    location = data['location']
+    Body = f"Emergency: {location} {phone_number}. Please help!"
+
+    # Implement code to send an SMS message with the location to the emergency contact here
+    # You may need to use a service or GSM modem to send the SMS
+
+    # For now, let's print the message for testing
+    print("Sending SMS:", Body)
+
+    # Return a response
+    Subject = "Emergency !!!! Person needs help"
+    Recipients_To = "shreyas.upadhy@redbus.com"
+    Recipients_Cc = ""
+    send_email(Subject, Body, Recipients_To, Recipients_Cc)
+    return 'Emergency message sent.'
 
 # Medical Assistance
 @app.route('/medical_assistance', methods=['GET', 'POST'])
