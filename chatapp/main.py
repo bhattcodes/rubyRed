@@ -10,6 +10,7 @@ import pandas.io.sql as psql
 import requests
 
 app = Flask(__name__)
+userids_array = ["11","12","13","14","15"]
 
 redis_db = redis.StrictRedis(host='localhost', port=6379, db=0)
 
@@ -17,6 +18,41 @@ redis_db = redis.StrictRedis(host='localhost', port=6379, db=0)
 def chat():
     print("helllo /mainpage called")
     return "<h1>hi</h1>"
+
+
+def clear_postgres():
+    try:
+        # Replace with your PostgreSQL connection details
+        conn = psycopg2.connect(
+           host="localhost",
+            database="postgres",
+            port=5433,
+            user="postgres",
+            password="postgres"
+        )
+
+        # Create a cursor
+        cursor = conn.cursor()
+
+        # Construct and execute the DELETE statement
+        delete_query = "DELETE FROM perz;"  # Deletes all rows from all tables in the public schema
+        cursor.execute(delete_query)
+
+        # Commit the transaction
+        conn.commit()
+
+        print("All rows deleted from the 'perz' table.")
+
+    except psycopg2.Error as e:
+        print(f"Error: {e}")
+
+    finally:
+        if conn:
+            cursor.close()
+            conn.close()
+
+
+
 
 def connect(query, insert_data=None):
     """ Connect to the PostgreSQL database server """
@@ -74,7 +110,7 @@ def hit_chat_completions_api(content):
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are a summarisation assistant."
+                    "content": "You are a summarisation analyst."
                 },
                 {
                     "role": "user",
@@ -82,11 +118,7 @@ def hit_chat_completions_api(content):
                 },
                 {
                     "role": "user",
-                    "content": "Understand the context of it."
-                },
-                {
-                    "role": "user",
-                    "content": "summarise journey experience of user in bus in 2-3 keywords and return only keywords as response related to bus"
+                    "content": "keep in mind that the output should not be more than 3 words, your task is to Understand the context of above user messages and summarise journey experience of user in bus in 2 or 3 words related to bus"
                 }
             ]
         }
@@ -100,7 +132,7 @@ def hit_chat_completions_api(content):
         if response.status_code == 200:
             # Parse and print the response content (assuming it's in JSON format)
             response_data = response.json()
-            print("Response:", response_data)
+            # print("Response:", response_data)
             return response_data
         else:
             print("HTTP request failed with status code:", response.status_code)
@@ -110,9 +142,9 @@ def hit_chat_completions_api(content):
 
 
 
-userids_array = ["11","12","13","14","15"]
 
-def get_user_messages(data):
+
+def get_user_messages_store_postgres(data):
 
     for userid in userids_array:
 
@@ -121,22 +153,37 @@ def get_user_messages(data):
 
         for key, value in data.items():
             message_data = json.loads(value)
-            if message_data.get("userid") == target_userid:
+            if message_data.get("userid") == target_userid and message_data["message"] != "NEWUSER":
                 messages_by_userid.append(message_data["message"])
 
         print("userid: "+userid+" = "+str(messages_by_userid))
         response_data = hit_chat_completions_api(str(messages_by_userid))
         content = response_data['response']['openAIResponse']['choices'][0]['message']['content']
+        print(content)
 
-    
+        # push to postgres
+        insert_data = {
+            'userid': userid,
+            'message': str(messages_by_userid),
+            'perz_tags': str(content)
+        }
+        connect(None,insert_data)
+
+@app.route('/start_new_session',methods=['GET'])
+def start_session():
+    redis_db.flushall()
+    clear_postgres()
+    ist = pytz.timezone('Asia/Kolkata')
+    current_time_ist = datetime.datetime.now(ist)
+    timestamp_ist = int(current_time_ist.timestamp())
+    for userid in userids_array:
+        timestamp_ist+=1      
+        data = {"message": "NEWUSER", "userid" : str (userid) } 
+        redis_db.set(timestamp_ist,  json.dumps(data) )
+
+    return jsonify({'status': 'initialised successfully in Redis', 'time': timestamp_ist }), 201
 
 
-        
-
-
-
-
-    
 
 
 
@@ -151,10 +198,11 @@ def clear_session():
     for key in redis_db.scan_iter("*"):
         value = redis_db.get(key)
         keys_and_values[key.decode('utf-8')] = value.decode('utf-8')
-    get_user_messages(keys_and_values)
+    get_user_messages_store_postgres(keys_and_values)
 
-    df= connect(" Insert into perz values (1,'hello','clean') ")
-    print(df)
+    # df= connect(" Insert into perz values (1,'hello','clean') ")
+    # print(df)
+    
     print("helllo /clear_session called")
     return "<h1>session cleared</h1>"
 
