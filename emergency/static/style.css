@@ -1,105 +1,26 @@
-/* Reset some default browser styles */
-body, h1, ul, li, a, h2, p, form, label, input[type="text"], button {
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
 
-/* Set a background color for the entire page */
-body {
-    background-color: #ffffff; /* White background */
-    font-family: Arial, sans-serif;
+#header {
+    background-color: #E6545B;
+    color: #ffffff;
+    padding: 10px;
     text-align: center;
 }
 
-/* Shared header styles */
-h1 {
-    background-color: #ff0000; /* Red background */
-    color: #ffffff; /* White text */
-    padding: 10px;
+.logo {
+    width: 100px; /* Set the desired width for the logo */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    margin-right: 10px;
 }
 
-/* Shared form styles */
-form {
-    background-color: #ffffff; /* White background */
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 400px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ff0000; /* Red border */
-    border-radius: 5px;
-}
-
-button {
-    background-color: #ff0000; /* Red background */
-    color: #ffffff; /* White text */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button[type="button"] {
-    background-color: #28a745; /* Green background for buttons of type "button" */
-}
-
-button[type="button"]:hover {
-    background-color: #218838;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Additional styles for specific sections */
-
-/* Style the options list */
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px auto;
-    max-width: 200px;
-    text-align: left;
-    border-radius: 5px;
-    background-color: #ffffff; /* White background */
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-ul li {
-    margin-bottom: 15px;
-}
-
-ul li a {
-    text-decoration: none;
-    color: #ff0000; /* Red text */
-    font-weight: bold;
-    padding: 5px;
-    display: inline-block;
-    border: 1px solid #ff0000; /* Red border */
-    border-radius: 5px;
-}
-
-ul li a:hover {
-    background-color: #ff0000; /* Red background */
-    color: #ffffff; /* White text */
-}
-
-/* Style the agreement section */
 #agreement-section {
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff;
     padding: 20px;
     margin: 20px auto;
     max-width: 600px;
@@ -118,4 +39,17 @@ p {
 
 input[type="checkbox"] {
     margin-right: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #E6545B;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #E6545B;
 }

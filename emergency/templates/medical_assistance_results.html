@@ -1,27 +1,83 @@
-<!-- medical_assistance_results.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nearest Hospitals</title>
+    <title>HOSPITALS NEAR YOU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #E6545B
+;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .hospital-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 200px;
+            width: 100%;
+        }
+
+        strong {
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .distance {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #E6545B;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #E6545B;
+        }
+    </style>
 </head>
 <body>
     <h1>Nearest Hospitals</h1>
     
-    <ul>
+    <div class="hospital-cards">
         {% for hospital in hospitals %}
-            <li>
-                <strong>{{ hospital.name }}</strong><br>
-                Distance: {{ hospital.distance }}<br>
+            <div class="card">
+                <strong>{{ hospital.name }}</strong>
+                <div class="distance">Distance: {{ hospital.distance }}</div>
                 <form action="{{ url_for('show_hospital_location') }}" method="post">
                     <input type="hidden" name="latitude" value="{{ hospital.latitude }}">
                     <input type="hidden" name="longitude" value="{{ hospital.longitude }}">
                     <button type="submit">View on Google Maps</button>
                 </form>
-            </li>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>

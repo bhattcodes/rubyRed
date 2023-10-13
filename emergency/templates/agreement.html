@@ -1,14 +1,15 @@
-<!-- In agreement.html -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Agreement Page</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
-    <h1>Agreement Page</h1>
+    <div id="header">
+        <img src="{{ url_for('static', filename='redbus_logo.png') }}" alt="Logo" class="logo">
+        <h1>Agreement Page</h1>
+    </div>
+
     <div id="agreement-section">
         <!-- Terms and conditions content here -->
         <h2>Terms and Conditions</h2>
