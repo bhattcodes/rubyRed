@@ -2,15 +2,48 @@
 <html>
 <head>
     <title>Choose an Option</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
-    <h1>Choose an Option</h1>
-    <ul>
-        <li><a href="/medical_assistance">Medical Assistance</a></li>
-        <li><a href="/insecure_assistance">Insecure Assistance</a></li>
-        <li><a href="/others">Others</a></li>
-    </ul>
+    <h1 class="mb-4">Choose an Option</h1> <!-- Add margin to the bottom -->
+
+    <div class="mt-4"> <!-- Add margin to the top -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/images/vecteezy.png" class="card-img-top" alt="Medical Assistance">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Medical Assistance</h5>
+                        <p class="card-text">Get the medical help you need when you need it. Our experienced team of healthcare professionals is available 24/7 to assist with your medical concerns. Whether it's a minor ailment or a health emergency, we're here to provide the care and support you require.</p>
+                        <a href="/medical_assistance">Medical Assistance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/images/emergency_image.jpg" class="card-img-top" alt="Insecure Assistance">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Our Emergency Contact Assistance service is available 24/7 to help you in case of emergencies. Whether you need immediate medical assistance, have a security concern, or require any other form of help, our team is here to provide the support you need. Your safety is our priority.</p>
+                        <a href="/insecure_assistance">Insecure Assistance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="your_image_source_here" class="card-img-top" alt="Others">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="/others">Others</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
