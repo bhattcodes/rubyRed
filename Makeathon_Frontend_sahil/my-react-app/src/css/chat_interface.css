@@ -26,8 +26,8 @@
   overflow: auto; /* Change this to 'auto' to make it scrollable */
   margin: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #a2f3f0;
-  animation: bubble 20s alternate infinite; /* Apply the bubble animation to the chat interface */
+  background-color: #cadedd;
+  /* animation: bubble 20s alternate infinite; Apply the bubble animation to the chat interface */
 }
 .chat-history {
   flex: 1;

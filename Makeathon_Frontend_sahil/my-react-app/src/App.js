@@ -16,7 +16,7 @@ function App() {
         buttonText="Chat now"
       />
       <Emergencycard
-        title="Feeling Threatened or need help?"
+        title="FeelSafe"
         description=""
         // imageSrc="sos_bg" // Add the image source
         buttonText="Safety"
