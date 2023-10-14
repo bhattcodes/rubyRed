@@ -26,7 +26,7 @@ app = Flask(__name__)
 # Function to get the nearest hospital
 def get_nearest_hospital(lat, long):
     api_url = f"https://overpass-api.de/api/interpreter?data=[out:json];(node['amenity'='hospital'](around:1000,{lat},{long}););out;"
-    response = requests.get(api_url)
+    response = requests.get(api_url, verify=False)
     data = response.json()
     data_refined = data.get("elements", [])
 
